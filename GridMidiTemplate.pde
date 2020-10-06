@@ -1,3 +1,7 @@
+/*
+A sketch to illustrate the use of the Mgrid class and Mknobs
+*/
+
 Mgrid m;
 
 void setup() {
