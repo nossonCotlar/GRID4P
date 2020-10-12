@@ -12,6 +12,7 @@ void setup() {
   noFill();
   strokeWeight(5);
   m = new Mgrid();
+  m.verbose(true);
   for (int i = 0; i < 32; i++) {
     m.addMknob(0, 1000, 0);
   }
@@ -54,6 +55,15 @@ void draw() {
     for (int j = 0; j < 4; j++) {
       float x = wsize * j + wsize / 2;
       float val = m.get(i * 4 + j + 16);
+      if (m.getB(i * 4 + j + 16)) {
+        pushStyle();
+        noStroke();
+        fill(100);
+        circle(x, y, size);
+        fill(255);
+        noFill();
+        popStyle();
+      }
       strokeWeight(5);
       stroke(map(val, 0, 1000, 0, 150), 255, 255);
       circle(x, y, size);
