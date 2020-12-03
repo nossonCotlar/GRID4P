@@ -1,9 +1,8 @@
-package GRID4P;
+package grid4p;
 
 import processing.core.*;
 
 public class GridTemplate extends PApplet{
-    Grid g; //declare Grid object
     public void settings(){
         size(1000, 1000);
     }
@@ -15,11 +14,11 @@ public class GridTemplate extends PApplet{
         noFill();
         strokeWeight(5);
 
-        g = new Grid(); //instanciate Grid object
+        Grid.begin();
         Grid.verbose(true); //set verbose flag
         for (int i = 0; i < Grid.TOTAL_PARAMS; i++) {
             //initialize each knob
-            g.addGknob(0, 1000, map(i, 0, Grid.TOTAL_PARAMS, 0, 1000));
+            Grid.add(0, 1000, map(i, 0, Grid.TOTAL_PARAMS, 0, 1000));
         }
     }
     public void draw(){
@@ -47,8 +46,8 @@ public class GridTemplate extends PApplet{
                         float x = px + i * wsize; //update X position
 
                         int knobIndex = (h << 5) + (k << 4) + (j << 2) + i; //calculate index for Gknob Array
-                        float val = g.get(knobIndex); //retrieve Gknob value at calculated index
-                        if (g.getB(knobIndex)) { //execute if button is pushed down
+                        float val = Grid.get(knobIndex); //retrieve Gknob value at calculated index
+                        if (Grid.getB(knobIndex)) { //execute if button is pushed down
                             //pretty much just fills the background of the circle with gray
                             pushStyle();
                             noStroke();
@@ -80,7 +79,7 @@ public class GridTemplate extends PApplet{
     }
 
     public static void main(String[] args){
-        PApplet.main("systems.rood.grid4p.GridTemplate");
+        PApplet.main("grid4p.GridTemplate");
     }
 
 }

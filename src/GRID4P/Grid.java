@@ -1,4 +1,4 @@
-package GRID4P;
+package grid4p;
 
 import themidibus.*;
 import static java.lang.Integer.min;
@@ -9,11 +9,15 @@ public class Grid {
     private static final int BANK_MULT = 4;
     private static long midiEventCount = 0;
     private static MidiBus bus;
-    private Gknob[] k; //array of Gknobs
-    private int counter; //to keep track of already-used knobs
+    private static Gknob[] k; //array of Gknobs
+    private static int counter; //to keep track of already-used knobs
     private static boolean verbose; //whether to print midi messages to stdout
 
     public Grid(){
+
+
+    }
+    public static int begin(){
         verbose = false;
         counter = 0;
         k = new Gknob[TOTAL_PARAMS]; //create Gknob array
@@ -24,56 +28,56 @@ public class Grid {
         int inputIndex = findIntechInputIndex(MidiBus.availableInputs()); //find midi input with "intech"
         bus = new MidiBus(); //instanciate up midi bus
         bus.addInput(inputIndex);
-        bus.registerParent(new GridContext());
-
+        bus.registerParent(new GridCallbackHandler());
+        return 0;
     }
 
 
-    public float get(int n) { //returns the value of the specified Mknob
+    public static float get(int n) { //returns the value of the specified Mknob
         return k[n].get();
     }
-    public float value(int n) { //alias of get()
+    public static float value(int n) { //alias of get()
         return k[n].get();
     }
-    public boolean getB(int n) { //returns the value of the specified Mknob's button (boolean)
+    public static boolean getB(int n) { //returns the value of the specified Mknob's button (boolean)
         return k[n].getB();
     }
 
-    public float getMin(int n) {return k[n].min();}
-    public float getMax(int n) {return k[n].max();}
+    public static float getMin(int n) {return k[n].min();}
+    public static float getMax(int n) {return k[n].max();}
 
-    public Gknob setGknob(int n, float min, float max) {
-        this.advanceCounter();
-        this.k[n].min = min;
-        this.k[n].max = max;
-        this.k[n].used = true;
-        return this.k[n];
+    public static Gknob set(int n, float min, float max) {
+        advanceCounter();
+        k[n].min = min;
+        k[n].max = max;
+        k[n].used = true;
+        return k[n];
     }
-    public Gknob setGknob(int n, float min, float max, float def) {
-        this.k[n].val = (int) map(def, min, max, 0, 127);
-        this.k[n].min = min;
-        this.k[n].max = max;
-        this.k[n].used = true;
-        return this.k[n];
+    public static Gknob set(int n, float min, float max, float def) {
+        k[n].val = (int) map(def, min, max, 0, 127);
+        k[n].min = min;
+        k[n].max = max;
+        k[n].used = true;
+        return k[n];
     }
-    public Gknob addGknob(float min, float max) {
-        this.advanceCounter();
-        this.k[counter].min = min;
-        this.k[counter].max = max;
-        this.k[counter].used = true;
-        return this.k[counter];
+    public static Gknob add(float min, float max) {
+        advanceCounter();
+        k[counter].min = min;
+        k[counter].max = max;
+        k[counter].used = true;
+        return k[counter];
     }
-    public Gknob addGknob(float min, float max, float def) {
-        this.advanceCounter();
-        this.k[counter].val = (int) map(def, min, max, 0, 127);
-        this.k[counter].min = min;
-        this.k[counter].max = max;
-        this.k[counter].used = true;
-        return this.k[counter];
+    public static Gknob add(float min, float max, float def) {
+        advanceCounter();
+        k[counter].val = (int) map(def, min, max, 0, 127);
+        k[counter].min = min;
+        k[counter].max = max;
+        k[counter].used = true;
+        return k[counter];
     }
 
     //Midi Event Handlers
-    public void controllerChange(int channel, int number, int value) {
+    public static void controllerChange(int channel, int number, int value) {
         int n = min(number - NOTE_OFFSET + channel * BANK_MULT, TOTAL_PARAMS - 1);
         k[n].val = value;
         midiEventCount++;
@@ -83,7 +87,7 @@ public class Grid {
                 Integer.toString(value),
                 Long.toHexString(midiEventCount));
     }
-    public void noteOn(int channel, int number, int value) {
+    public static void noteOn(int channel, int number, int value) {
         int n = min(number - NOTE_OFFSET + channel * BANK_MULT, TOTAL_PARAMS - 1);
         k[n].button = true;
         midiEventCount++;
@@ -93,7 +97,7 @@ public class Grid {
                 Integer.toString(value),
                 Long.toHexString(midiEventCount));
     }
-    public void noteOff(int channel, int number, int value) {
+    public static void noteOff(int channel, int number, int value) {
         int n = min(number - NOTE_OFFSET + channel * BANK_MULT, TOTAL_PARAMS - 1);
         k[n].button = false;
         midiEventCount++;
@@ -107,9 +111,12 @@ public class Grid {
 
     public static void verbose(boolean v) {
         verbose = v;
-        if(v) System.out.println(bus.toString());
+        if(v){
+            System.out.println(bus.toString());
+            System.out.println(bus.attachedInputs()[0]);
+        }
     }
-    private void verboseMessaging(String eventType, String channel, String number, String value, String eventID){
+    private static void verboseMessaging(String eventType, String channel, String number, String value, String eventID){
         if(verbose){
             System.out.println(eventType + " | Channel: " +
                     channel + " | Number: " +
@@ -118,15 +125,15 @@ public class Grid {
         }
     }
 
-    private int advanceCounter() {
-        while (k[this.counter].used) this.counter++;
-        return min(this.counter, TOTAL_PARAMS - 1);
+    private static int advanceCounter() {
+        while (k[counter].used) counter++;
+        return min(counter, TOTAL_PARAMS - 1);
     }
 
-    private float map(float val, float ax, float ay, float bx, float by){
+    private static float map(float val, float ax, float ay, float bx, float by){
         return bx + (by - bx) * ((val - ax) / (ay - ax));
     }
-    private int findIntechInputIndex(String[] list) {
+    private static int findIntechInputIndex(String[] list) {
         for (int i = 0; i < list.length; i++) {
             if (list[i].contains("Intech")) return i;
         }

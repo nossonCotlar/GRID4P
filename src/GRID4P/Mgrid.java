@@ -1,4 +1,4 @@
-package GRID4P;
+package grid4p;
 
 //The Mgrid class is deprecated, we're keeping it around for compatibility purposes.
 public class Mgrid extends Grid{

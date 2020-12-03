@@ -1,4 +1,4 @@
-package GRID4P;
+package grid4p;
 
 public class Gknob {
     public int val, def;
