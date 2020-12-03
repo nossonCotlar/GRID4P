@@ -2,7 +2,7 @@
 # UTF-8 supported.
 
 # The name of your Library as you want it formatted.
-name = systems.rood.grid4p.Grid for Processing
+name = Grid for Processing
 
 # List of authors. Links can be provided using the syntax [author name](url).
 authors = [Nosson Cotlar](https://rood.systems)
@@ -25,7 +25,7 @@ categories = Hardware
 # repeating the name of your Library here. Also, avoid saying anything redundant 
 # like mentioning that it's a Library. This should start with a capitalized 
 # letter, and end with a period.
-sentence = Tools for using the Intech systems.rood.grid4p.Grid Midi modules to interact with your Processing Sketches 
+sentence = Tools for using the Intech Grid Midi modules to interact with your Processing Sketches
 
 # Additional information suitable for the Processing website. The value of
 # 'sentence' always will be prepended, so you should start by writing the
