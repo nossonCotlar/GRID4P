@@ -10,4 +10,7 @@ public class GridCallbackHandler {
     public void noteOff(int channel, int number, int value){
         Grid.noteOff(channel, number, value);
     }
+    public void print(String s){
+        System.out.println(s);
+    }
 }
