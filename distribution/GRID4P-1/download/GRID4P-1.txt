@@ -25,13 +25,13 @@ categories = Hardware
 # repeating the name of your Library here. Also, avoid saying anything redundant 
 # like mentioning that it's a Library. This should start with a capitalized 
 # letter, and end with a period.
-sentence = Tools for using the Intech Grid Midi modules to interact with your Processing Sketches 
+sentence = Tools for interacting with Processing from the Intech GRID Midi modules.
 
 # Additional information suitable for the Processing website. The value of
 # 'sentence' always will be prepended, so you should start by writing the
 # second sentence here. If your Library only works on certain operating systems,
 # mention it here.
-paragraph =  
+paragraph = A minimum-frills solution for integrating the Intech GRID hardware into Processing. That's uhhh, about it. Still a WIP.  
 
 # Links in the 'sentence' and 'paragraph' attributes can be inserted using the
 # same syntax as for authors. 
@@ -53,5 +53,5 @@ prettyVersion = 1.0.0  # This is treated as a String
 # You can find the revision numbers in the change log: https://raw.githubusercontent.com/processing/processing/master/build/shared/revisions.txt
 # Only use maxRevision (or minRevision), when your Library is known to 
 # break in a later (or earlier) release. Otherwise, use the default value 0.
-minRevision = 0
+minRevision = 266
 maxRevision = 0
