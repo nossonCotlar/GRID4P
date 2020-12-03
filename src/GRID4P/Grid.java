@@ -113,7 +113,12 @@ public class Grid {
         verbose = v;
         if(v){
             System.out.println(bus.toString());
-            System.out.println(bus.attachedInputs()[0]);
+            try{
+                System.out.println(bus.attachedInputs()[0]);
+            } catch (Exception e){
+                System.out.println("Couldn't find any inputs");
+            }
+
         }
     }
     private static void verboseMessaging(String eventType, String channel, String number, String value, String eventID){
