@@ -1,4 +1,4 @@
-<project name="GRID4P" default="clean" basedir="../">
+<project name="grid4p" default="clean" basedir="../">
 
     
 <!--	

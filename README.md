@@ -1,4 +1,4 @@
-# GRID4P
+# grid4p
 A class (future library) for the use of <b>GRID</b> Midi Modules inside Processing
 
 Currently only supports the <b>EN16</b> module and has <b>themidibus</b> as a dependency for midi communication. 
