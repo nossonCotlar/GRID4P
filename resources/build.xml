@@ -1,4 +1,4 @@
-<project name="grid4p" default="clean" basedir="../">
+<project name="Processing Library" default="clean" basedir="../">
 
     
 <!--	
@@ -82,7 +82,7 @@
 ${line}
 	src path        ${project.src}
 	bin path        ${project.bin}
-	classpath.local	${classpath.local.location}
+	classpath.local ${classpath.local.location}
 	sketchbook      ${sketchbook.location}
 	java version    ${java.target.version}
 ${line}
@@ -211,13 +211,18 @@ ${line}
 	<target name="generate.javadoc" if="is.normal">
 	  	<!-- create the java reference of the Library -->
 		<javadoc bottom="Processing Library ${project.name} by ${author.name}. ${library.copyright}" 
-				classpath="${classpath.local.location}/core.jar;{project.bin}" 
+				classpath="${classpath.local.location}/core.jar;{project.bin};"
 				destdir="${project.tmp}/${project.name}/reference" 
 				verbose="false" 
 				stylesheetfile="resources/stylesheet.css" 
 				doctitle="Javadocs: ${project.name}" 
 				public="true" version="false" 
 				windowtitle="Javadocs: ${project.name}">
+			<classpath>
+				<fileset dir="lib">
+					<include name="themidibus.jar"/>
+				</fileset>
+			</classpath>
  			
  			<link href="${javadoc.java.href}" />
 			<link href="${javadoc.processing.href}" />

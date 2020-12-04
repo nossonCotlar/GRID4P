@@ -4,7 +4,7 @@ import themidibus.*;
 import static java.lang.Integer.min;
 
 /**
- * This is the main class for managing communication with the GRID modules.
+ * The main class for managing communication with the GRID modules.
  *
  * The Grid class <strong>can not</strong> be instantiated, and instead only provides static methods
  * for assigning parameters, setting configurations, and other functionality.

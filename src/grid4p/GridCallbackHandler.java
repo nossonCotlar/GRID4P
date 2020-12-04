@@ -1,5 +1,9 @@
 package grid4p;
 
+/**
+ * A Class to handle callbacks from the Midi Bus within {@link Grid}
+ * <strong>Don't try using it</strong>
+ */
 public class GridCallbackHandler {
     public void controllerChange(int channel, int number, int value){
         Grid.controllerChange(channel, number, value);

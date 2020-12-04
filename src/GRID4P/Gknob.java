@@ -1,9 +1,8 @@
 package grid4p;
 
 /**
- * The Gknob class is a part of the GRID4P Library.
- * A Gknob (GRID Knob) is a representation of a modifiable physical parameter
- * on the Intech GRID Midi Module.
+ * A Gknob (GRID Knob) is a representation of a modifiable physical GRID parameter.
+ *
  * A static Gknob array is handled by the {@link Grid} class,
  * and as such, Gknob-s needn't be explicitly declared or defined by the user.
  * That being said, it is welcome and encouraged for the user to explicitly
