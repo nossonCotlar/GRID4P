@@ -75,3 +75,9 @@ Some folders like `examples` or `src` might be missing. After Library GRID4P has
 ### Troubleshooting
 
 If you're having trouble, have a look at the [Processing Wiki](https://github.com/processing/processing/wiki/How-to-Install-a-Contributed-Library) for more information, or contact the author [Nosson Cotlar](https://rood.systems).
+
+## Also See
+[The Intech GRID Editor](https://github.com/intechstudio/grid-editor)
+and
+[The Intech GRID Firmware](https://github.com/intechstudio/grid-fw)
+
