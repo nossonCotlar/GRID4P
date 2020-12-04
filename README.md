@@ -1,26 +1,38 @@
-# grid4p
-A class (future library) for the use of <b>GRID</b> Midi Modules inside Processing
+## How to install GRID4P
 
-Currently only supports the <b>EN16</b> module and has <b>themidibus</b> as a dependency for midi communication. 
+### Install with the Contribution Manager
 
-The presence of "Mknobs" (Midi Knobs) are added to the sketch, which behave as real-time perameter adjusters. 
+Add contributed Libraries by selecting the menu item _Sketch_ → _Import Library..._ → _Add Library..._ This will open the Contribution Manager, where you can browse for GRID4P, or any other Library you want to install.
 
-The "Mgrid" class is the managing class for the Mknobs, which handles the midi communication and other handling
- 
- -- Begin by instantiating a Mgrid object by its default constructor. <br>
- -- Then, assign values to the Mknobs via any of the methods: <br>
-    - setMknob(int n, float min, float max)<br>
-    - setMknob(int n, float min, float max, float def)<br>
-    - addMknob(float min, float max)<br>
-    - addMknob(float min, float max, float def)<br>
- 
- these methods set up an Mknob within the Mgrid, but they also return a pointer to an Mknob. <br>
- 
- this means that given an Mgrid m, you can either do something like this: <br>
-   m.setMknob(0, 0, 1000);<br>
-   float val = m.get(0);<br>
-   
- or this:<br>
-   Mknob speed;<br>
-   speed = m.setMknob(0, 0, 1000);<br>
-   float val = speed.get();<br>
+Not all available Libraries have been converted to show up in this menu. If a Library isn't there, it will need to be installed manually by following the instructions below.
+
+### Manual Install
+
+Contributed Libraries may be downloaded separately and manually placed within the `libraries` folder of your Processing sketchbook. To find (and change) the Processing sketchbook location on your computer, open the Preferences window from the Processing application (PDE) and look for the "Sketchbook location" item at the top.
+
+By default the following locations are used for your sketchbook folder: 
+  * For Mac users, the sketchbook folder is located inside `~/Documents/Processing` 
+  * For Windows users, the sketchbook folder is located inside `My Documents/Processing`
+
+Download GRID4P from https://grid4p.rood.systems
+
+Unzip and copy the contributed Library's folder into the `libraries` folder in the Processing sketchbook. You will need to create this `libraries` folder if it does not exist.
+
+The folder structure for Library GRID4P should be as follows:
+
+```
+Processing
+  libraries
+    GRID4P
+      examples
+      library
+        GRID4P.jar
+      reference
+      src
+```
+             
+Some folders like `examples` or `src` might be missing. After Library GRID4P has been successfully installed, restart the Processing application.
+
+### Troubleshooting
+
+If you're having trouble, have a look at the [Processing Wiki](https://github.com/processing/processing/wiki/How-to-Install-a-Contributed-Library) for more information, or contact the author [Nosson Cotlar](https://rood.systems).
