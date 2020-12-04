@@ -1,6 +1,5 @@
 import grid4p.*;
 
-Grid grid;
 void setup(){
     size(800, 800);
     colorMode(HSB);
@@ -9,10 +8,11 @@ void setup(){
     noFill();
     strokeWeight(5);
 
-    grid = new Grid();
-    //m.verbose(true); //uncomment this if you want verbose messaging for midi events
+    Grid.begin();
+    Grid.verbose(true); //set verbose flag
     for (int i = 0; i < Grid.TOTAL_PARAMS; i++) {
-        m.addGknob(0, 1000, 0);
+        //initialize each knob
+        Grid.add(0, 1000, map(i, 0, Grid.TOTAL_PARAMS, 0, 1000));
     }
 }
 void draw(){
@@ -40,8 +40,8 @@ void draw(){
                     float x = px + i * wsize; //update X position
 
                     int knobIndex = (h << 5) + (k << 4) + (j << 2) + i; //calculate index for Gknob Array
-                    float val = m.get(knobIndex); //retrieve Gknob value at calculated index
-                    if (m.getB(knobIndex)) { //execute if button is pushed down
+                    float val = Grid.get(knobIndex); //retrieve Gknob value at calculated index
+                    if (Grid.getB(knobIndex)) { //execute if button is pushed down
                         //pretty much just fills the background of the circle with gray
                         pushStyle();
                         noStroke();
@@ -70,3 +70,4 @@ void draw(){
             }
         }
     }
+}
