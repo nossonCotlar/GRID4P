@@ -1,8 +1,8 @@
-## How to install Grid for Processing
+## How to install GRID4P
 
 ### Install with the Contribution Manager
 
-Add contributed Libraries by selecting the menu item _Sketch_ → _Import Library..._ → _Add Library..._ This will open the Contribution Manager, where you can browse for Grid for Processing, or any other Library you want to install.
+Add contributed Libraries by selecting the menu item _Sketch_ → _Import Library..._ → _Add Library..._ This will open the Contribution Manager, where you can browse for GRID4P, or any other Library you want to install.
 
 Not all available Libraries have been converted to show up in this menu. If a Library isn't there, it will need to be installed manually by following the instructions below.
 
@@ -14,24 +14,24 @@ By default the following locations are used for your sketchbook folder:
   * For Mac users, the sketchbook folder is located inside `~/Documents/Processing` 
   * For Windows users, the sketchbook folder is located inside `My Documents/Processing`
 
-Download Grid for Processing from https://grid4p.rood.systems
+Download GRID4P from https://grid4p.rood.systems
 
 Unzip and copy the contributed Library's folder into the `libraries` folder in the Processing sketchbook. You will need to create this `libraries` folder if it does not exist.
 
-The folder structure for Library Grid for Processing should be as follows:
+The folder structure for Library GRID4P should be as follows:
 
 ```
 Processing
   libraries
-    Grid for Processing
+    GRID4P
       examples
       library
-        Grid for Processing.jar
+        GRID4P.jar
       reference
       src
 ```
              
-Some folders like `examples` or `src` might be missing. After Library Grid for Processing has been successfully installed, restart the Processing application.
+Some folders like `examples` or `src` might be missing. After Library GRID4P has been successfully installed, restart the Processing application.
 
 ### Troubleshooting
 

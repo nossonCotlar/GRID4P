@@ -2,7 +2,7 @@
 # UTF-8 supported.
 
 # The name of your Library as you want it formatted.
-name = Grid for Processing
+name = GRID4P
 
 # List of authors. Links can be provided using the syntax [author name](url).
 authors = [Nosson Cotlar](https://rood.systems)
