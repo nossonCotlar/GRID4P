@@ -1,6 +1,6 @@
 # Getting Started
 GRID4P is all about interacting with your sketch in real time, and not settling for constant values. 
-Perhaps the most important aspect of this library is Gknob (GRID Knob) class; that';'s the one you'll use as your "Knobs" to control different aspects of your code in real time. 
+Perhaps the most important aspect of this library is Gknob (GRID Knob) class; that's the one you'll use as your "Knobs" to control different aspects of your code in real time. 
 To get the GRID ready, you must call <b>Grid.begin();</b> from your sketch's setup method. 
 <pre>void setup(){
     size(500, 500);
