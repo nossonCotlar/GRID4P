@@ -1,3 +1,5 @@
 .idea
-/distribution/
-/out/
+distribution/
+out/
+web/
+resources/stylesheet.css
