@@ -140,6 +140,26 @@ public abstract class Grid {
         k[GknobIndex].used = true;
         return k[GknobIndex];
     }
+    /**
+     * Adds a Gknob configuration to the specified Gknob Index based on an existing Gknob.
+     * Sets the minimum, maximum, and default configuration for said Gknob.
+     * Returns the Gknob instance that was added so that it
+     * may be handled by the user if desired.
+     * @param GknobIndex the index of the GRID's Gknob you wish to access
+     * @param g Gknob to be accepted and added to the GRID
+     * @return the newly added and configured Gknob
+     */
+    public static Gknob set(int GknobIndex, Gknob g){
+        advanceCounter();
+        if(g == null){
+            System.err.println("Yikes, you tried setting a Gknob that wasn't instantiated.\nTry instantiating it first");
+            return null;
+        }
+        else{
+            k[GknobIndex] = g;
+        }
+        return k[GknobIndex];
+    }
 
     /**
      * Adds a Gknob configuration to the next vacant Gknob position on the GRID.
@@ -176,6 +196,26 @@ public abstract class Grid {
         k[counter].min = min;
         k[counter].max = max;
         k[counter].used = true;
+        return k[counter];
+    }
+
+    /**
+     * Adds a Gknob configuration to the next vacant Gknob position on the GRID based on an existing Gknob.
+     * Sets the minimum, maximum, and default configuration for said Gknob.
+     * Returns the Gknob instance that was added so that it
+     * may be handled by the user if desired.
+     * @param g Gknob to be accepted and added to the GRID
+     * @return the newly added and configured Gknob
+     */
+    public static Gknob add(Gknob g){
+        advanceCounter();
+        if(g == null){
+            System.err.println("Yikes, you tried adding a Gknob that wasn't instantiated.\nTry instantiating it first");
+            return null;
+        }
+        else{
+            k[counter] = g;
+        }
         return k[counter];
     }
 
@@ -299,7 +339,10 @@ public abstract class Grid {
      * @return the new Gknob counter index
      */
     private static int advanceCounter() {
-        while (k[counter].used) counter++;
+        while (k[counter].used){
+            counter++;
+            if(counter >= TOTAL_PARAMS) break;
+        }
         return min(counter, TOTAL_PARAMS - 1);
     }
 
