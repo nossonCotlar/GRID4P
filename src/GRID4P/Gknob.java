@@ -26,7 +26,7 @@ public class Gknob {
      *      maximum: 127
      *      button: false
      */
-    Gknob() {
+    public Gknob() {
         val = 0;
         min = 0;
         max = 127;
@@ -37,14 +37,14 @@ public class Gknob {
      * Constructor for a Gknob, intended to be called when populating
      * an addressable list or array of Gknobs.
      *
-     * @param val default value that the Gknob will start off with
      * @param min minimum value
      * @param max maximum value
+     * @param def default value that the Gknob will start off with
      */
-    Gknob(int val, float min, float max) {
-        this.val = val;
+    public Gknob(float min, float max, float def) {
         this.min = min;
         this.max = max;
+        this.val = (int)map(def, min, max, 0, 127);
         button = false;
         used = true;
     }
