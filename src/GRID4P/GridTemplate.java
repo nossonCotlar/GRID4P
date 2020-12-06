@@ -1,11 +1,10 @@
 package grid4p;
 
+import processing.core.*;
+
 /**
  * A runnable class that extends a Processing PApplet, to test GRID4P in a normal IDE.
  */
-
-import processing.core.*;
-
 public class GridTemplate extends PApplet{
     public void settings(){
         size(1000, 1000);
