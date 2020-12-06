@@ -1,5 +1,7 @@
 package grid4p;
 
+import javax.sound.midi.*;
+
 /**
  * A Class to handle callbacks from the Midi Bus within {@link Grid}
  * <strong>Don't try using it</strong>
