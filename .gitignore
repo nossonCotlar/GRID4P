@@ -3,3 +3,4 @@ distribution/
 out/
 web/
 resources/stylesheet.css
+src/GridSandbox.java
