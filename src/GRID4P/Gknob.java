@@ -15,6 +15,7 @@ public class Gknob {
     protected int val, def;
     protected float min, max;
     protected boolean used, button;
+    protected Gaction gaction;
 
     /**
      * Constructor for a Gknob, intended to be called when populating
@@ -122,6 +123,18 @@ public class Gknob {
      */
     private float map(float val, float ax, float ay, float bx, float by){
         return bx + (by - bx) * ((val - ax) / (ay - ax));
+    }
+
+    /**
+     * Method which accepts a user-implemented Gaction, with user defined gaction methods.
+     * The methods in the Gaction are to be called when the appropriate midi event occurs.
+     *
+     * @param passedAction user defined implementation of the Gaction interface
+     * @return this object. Useful in some instances.
+     */
+    public Gknob setGaction(Gaction passedAction){
+        this.gaction = passedAction;
+        return this;
     }
 }
 

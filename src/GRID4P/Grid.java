@@ -237,6 +237,10 @@ public abstract class Grid {
     protected static void controllerChange(int channel, int number, int value) {
         int n = min(number - NOTE_OFFSET + channel * BANK_MULT, TOTAL_PARAMS - 1);
         k[n].val = value;
+        if(k[n].gaction != null){
+            k[n].gaction.ontweak(); //perform gaction ontweak routine
+            if(k[n].getRaw() <= 0 || k[n].getRaw() >= 127) k[n].gaction.onlimitreached(); // if limit is reached, perform onlimitreached routine
+        }
         midiEventCount++;
         verboseMidiEventMessaging("Tweak",
                 Integer.toString(channel),
@@ -261,6 +265,9 @@ public abstract class Grid {
     protected static void noteOn(int channel, int number, int value) {
         int n = min(number - NOTE_OFFSET + channel * BANK_MULT, TOTAL_PARAMS - 1);
         k[n].button = true;
+        if(k[n].gaction != null){
+            k[n].gaction.onpush();
+        }
         midiEventCount++;
         verboseMidiEventMessaging("Note-On",
                 Integer.toString(channel),
@@ -284,6 +291,9 @@ public abstract class Grid {
     protected static void noteOff(int channel, int number, int value) {
         int n = min(number - NOTE_OFFSET + channel * BANK_MULT, TOTAL_PARAMS - 1);
         k[n].button = false;
+        if(k[n].gaction != null){
+            k[n].gaction.onrelease(); //perform gaction onrelease routine
+        }
         midiEventCount++;
         verboseMidiEventMessaging("Note-Off",
                 Integer.toString(channel),
@@ -321,12 +331,22 @@ public abstract class Grid {
      * @param value midi value
      * @param eventID midi event ID
      */
-    private static void verboseMidiEventMessaging(String eventType, String channel, String number, String value, String eventID){
+    protected static void verboseMidiEventMessaging(String eventType, String channel, String number, String value, String eventID){
         if(verbose){
             System.out.println(eventType + " | Channel: " +
                     channel + " | Number: " +
                     number + " | Value: " +
                     value + " -- EventID: " + eventID);
+        }
+    }
+
+    /**
+     * Another generic method for warnings about the GRID communications that are preferred to be verbose
+     * @param warning String containing warning description
+     */
+    protected static void verboseWarning(String warning){
+        if(verbose){
+            System.out.println(warning);
         }
     }
 
@@ -359,6 +379,18 @@ public abstract class Grid {
      */
     private static float map(float val, float ax, float ay, float bx, float by){
         return bx + (by - bx) * ((val - ax) / (ay - ax));
+    }
+
+    /**
+     * Method which accepts a user-implemented Gaction, with user defined gaction methods.
+     * The methods in the Gaction are to be called when the appropriate midi event occurs.
+     *
+     * @param GknobIndex index of the Gknob to which the Gaction is to be assigned
+     * @param passedAction user defined implementation of the Gaction interface
+     * @return the Gknob which has been assigned the Gaction. Useful in some instances.
+     */
+    private static Gknob setGaction(int GknobIndex, Gaction passedAction){
+        return k[GknobIndex].setGaction(passedAction);
     }
 
     /**
