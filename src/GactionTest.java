@@ -2,34 +2,27 @@ import grid4p.*;
 import processing.core.PApplet;
 
 public class GactionTest extends PApplet{
-    Gknob a, b, c;
+    Gknob myGknob;
     float size = 0;
+    int bg = 0;
 
     public void settings(){
         size(500, 500);
     }
     public void setup(){
-
-        Grid.begin();
-        a = Grid.add(0, 1000);
-        b = Grid.add(0, height);
-        c = Grid.add(0, 5, 1);
-        a.setGaction(new Gaction(){
-            public void onpush(){
-                size = b.get();
-            }
-            public void onlimitreached(){
-                background(255, 0, 0);
+        size(500, 500);
+        Grid.begin();  //set up Grid
+        myGknob = Grid.add(0, 500, 250); //add Gknob configuration to the Grid
+        myGknob.setGaction(new Gaction(){ //pass implemented Gaction into the Gknob's setGaction method
+            public void onpush(){ //define whichever methods you'd like
+                size = myGknob.get();
             }
         });
-
-
     }
     public void draw(){
-    background(0);
-    circle(width >> 1, height >> 1, size);
-    if(size > 0) size -= c.get();
-
+        background(0);
+        circle(width >> 1, height >> 1, size);
+        if(size > 0) --size;
     }
 
     public static void main(String[] args){
