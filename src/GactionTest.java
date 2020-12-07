@@ -14,7 +14,7 @@ public class GactionTest extends PApplet{
         a = Grid.add(0, 1000);
         b = Grid.add(0, height);
         c = Grid.add(0, 5, 1);
-        a.setAction(new Gaction(){
+        a.setGaction(new Gaction(){
             public void onpush(){
                 size = b.get();
             }
