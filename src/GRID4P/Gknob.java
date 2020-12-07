@@ -126,13 +126,15 @@ public class Gknob {
     }
 
     /**
-     * Method which accepts a user created Gaction object, with user defined gaction methods.
+     * Method which accepts a user-implemented Gaction, with user defined gaction methods.
      * The methods in the Gaction are to be called when the appropriate midi event occurs.
      *
      * @param passedAction user defined implementation of the Gaction interface
+     * @return this object. Useful in some instances.
      */
-    public void setAction(Gaction passedAction){
+    public Gknob setGaction(Gaction passedAction){
         this.gaction = passedAction;
+        return this;
     }
 }
 
