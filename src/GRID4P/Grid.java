@@ -339,6 +339,18 @@ public abstract class Grid {
     }
 
     /**
+     * Method which accepts a user-implemented Gaction, with user defined gaction methods.
+     * The methods in the Gaction are to be called when the appropriate midi event occurs.
+     *
+     * @param GknobIndex index of the Gknob to which the Gaction is to be assigned
+     * @param passedAction user defined implementation of the Gaction interface
+     * @return the Gknob which has been assigned the Gaction. Useful in some instances.
+     */
+    private static Gknob setGaction(int GknobIndex, Gaction passedAction){
+        return k[GknobIndex].setGaction(passedAction);
+    }
+
+    /**
      * Auxiliary method for determining the index of the Intech GRID
      * within the recognized midi inputs
      *
